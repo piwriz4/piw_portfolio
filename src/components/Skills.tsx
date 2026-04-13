@@ -8,21 +8,27 @@ const skillGroups = [
     title: "Core Strengths",
     icon: Cpu,
     skills: [
-      "Robotics Software", "ROS / ROS2", "Sensor Integration", 
-      "Mapping & Localization", "Autonomous Systems", "IoT Systems", 
-      "AI-based Monitoring", "Computer Vision", "Real-time Monitoring Platforms", 
-      "Backend & Dashboard Development"
+      "Robotics Software", "ROS / ROS2", "Sensor Integration",
+      "Semantic Mapping", "Mapping & Localization", "Autonomous Systems",
+      "Industrial IoT Systems", "Computer Vision", "AI-based Monitoring",
+      "Robot Operations Dashboards", "Real-time Monitoring Platforms",
+      "Backend & Dashboard Development", "Environmental Sensing"
     ]
   },
   {
     title: "Programming",
     icon: Code2,
-    skills: ["Python", "C", "C++", "Node.js", "TypeScript", "SQL"]
+    skills: ["Python", "C", "C++", "JavaScript", "TypeScript", "Node.js", "SQL"]
   },
   {
     title: "Systems & Tools",
     icon: Terminal,
-    skills: ["PostgreSQL", "MQTT / REST", "MATLAB", "Fusion360", "KiCAD", "Docker", "Git", "Linux"]
+    skills: [
+      "YOLO / YOLOv3", "OpenCV", "PyTorch", "TensorRT",
+      "PostgreSQL", "MQTT / REST / Socket.IO", "Gmapping",
+      "Jetson Nano", "Arduino", "MATLAB", "Fusion360",
+      "KiCAD", "Docker", "Git", "Linux"
+    ]
   },
   {
     title: "Soft Skills",

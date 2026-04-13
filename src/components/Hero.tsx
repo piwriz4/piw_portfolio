@@ -4,6 +4,8 @@ import { ArrowRight, Download, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import profileImage from '@/assets/profile.png';
 
+const RESUME_URL = 'https://drive.google.com/file/d/1cAxqWKme1ezUVKLaJ9Vc0FlyVoyP-5pF/view?usp=sharing';
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-12 sm:pt-20 overflow-hidden tech-grid">
@@ -50,8 +52,10 @@ export default function Hero() {
               >
                 <Mail className="mr-2 w-4 h-4" /> Contact Me
               </a>
-              <Button variant="ghost" size="lg" className="hover:bg-primary/5 w-full sm:w-auto justify-center">
-                <Download className="mr-2 w-4 h-4" /> Resume
+              <Button variant="ghost" size="lg" className="hover:bg-primary/5 w-full sm:w-auto justify-center" asChild>
+                <a href={RESUME_URL} target="_blank" rel="noreferrer">
+                  <Download className="mr-2 w-4 h-4" /> Resume
+                </a>
               </Button>
             </div>
           </motion.div>

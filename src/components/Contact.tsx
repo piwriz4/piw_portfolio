@@ -3,7 +3,7 @@ import { Mail, MessageSquare, Linkedin } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 tech-grid relative">
+    <section id="contact" className="py-24 bg-muted/30 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -11,7 +11,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="max-w-3xl"
         >
-          <h2 className="section-kicker">06 // Connect</h2>
+          <h2 className="section-kicker">07 // Connect</h2>
           <h3 className="section-title mb-6">Let's build something <br /><span className="section-title-accent">intelligent together.</span></h3>
           
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl">

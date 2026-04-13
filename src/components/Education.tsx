@@ -11,7 +11,7 @@ const education = [
     details: "Specialized in ROS-based development, sensor fusion, and intelligent control systems. Thesis focused on real-time mapping and navigation for mobile robots."
   },
   {
-    degree: "Bachelor of Pyhsics Engineering",
+    degree: "Bachelor of Physics Engineering",
     school: "Telkom University",
     period: "2019 - 2023",
     focus: "IoT & Embedded Systems",

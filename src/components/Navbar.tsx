@@ -3,11 +3,14 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Cpu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+const RESUME_URL = 'https://drive.google.com/file/d/1cAxqWKme1ezUVKLaJ9Vc0FlyVoyP-5pF/view?usp=sharing';
+
 const navItems = [
   { name: 'About', href: '#about' },
   { name: 'Projects', href: '#projects' },
   { name: 'Skills', href: '#skills' },
   { name: 'Experience', href: '#experience' },
+  { name: 'Publications', href: '#publications' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -58,8 +61,10 @@ export default function Navbar() {
                   {item.name}
                 </a>
               ))}
-              <Button variant="outline" size="sm" className="ml-4 tech-border">
-                Resume
+              <Button variant="outline" size="sm" className="ml-4 tech-border" asChild>
+                <a href={RESUME_URL} target="_blank" rel="noreferrer">
+                  Resume
+                </a>
               </Button>
             </div>
           </div>
@@ -106,7 +111,16 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="px-1 pt-2">
-                <Button className="w-full tech-border h-11 rounded-xl">Resume</Button>
+                <Button className="w-full tech-border h-11 rounded-xl" asChild>
+                  <a
+                    href={RESUME_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Resume
+                  </a>
+                </Button>
               </div>
             </div>
           </motion.div>

@@ -4,9 +4,9 @@ import { Cpu, Globe, Zap, ShieldCheck } from 'lucide-react';
 
 const highlights = [
   {
-    icon: Cpu,
-    title: 'Robotics Systems',
-    description: 'Developing intelligent robotic solutions for autonomous operation and real-time control.'
+    icon: ShieldCheck,
+    title: 'Smart Monitoring',
+    description: 'Building monitoring tools that improve visibility, diagnostics, and operational efficiency.'
   },
   {
     icon: Globe,
@@ -14,14 +14,14 @@ const highlights = [
     description: 'Designing connected monitoring systems and data-driven automation workflows.'
   },
   {
+    icon: Cpu,
+    title: 'Robotics Systems',
+    description: 'Developing intelligent robotic solutions for autonomous operation and real-time control.'
+  },
+  {
     icon: Zap,
     title: 'Sensor Integration',
     description: 'Integrating sensors, devices, and embedded components for reliable field operation.'
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Smart Monitoring',
-    description: 'Building monitoring tools that improve visibility, diagnostics, and operational efficiency.'
   }
 ];
 
