@@ -23,7 +23,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              SYSTEM_STATUS: ACTIVE
+              Open to New Opportunities
             </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-4 leading-[0.95] text-slate-800">
@@ -32,11 +32,11 @@ export default function Hero() {
             </h1>
             
             <h2 className="text-lg sm:text-xl md:text-2xl font-mono text-cyan-700 mb-5 sm:mb-6">
-              Robotics, Embedded Systems & IoT Engineer
+              IoT & AI System Engineer
             </h2>
             
             <p className="text-base sm:text-lg text-muted-foreground max-w-xl mb-7 sm:mb-8 leading-relaxed">
-              Master&apos;s graduate in Electrical Engineering with expertise in robotics, embedded systems, and IoT automation. Skilled in sensor integration, smart monitoring, and hardware-software interfacing for intelligent system development.
+              Master&apos;s graduate in Electrical Engineering focused on building intelligent systems through IoT, AI, and embedded technologies. Experienced in sensor integration, smart monitoring, and hardware-software interfacing for reliable real-world automation.
             </p>
             
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
@@ -53,7 +53,7 @@ export default function Hero() {
                 <Mail className="mr-2 w-4 h-4" /> Contact Me
               </a>
               <Button variant="ghost" size="lg" className="hover:bg-primary/5 w-full sm:w-auto justify-center" asChild>
-                <a href={RESUME_URL} target="_blank" rel="noreferrer">
+                <a href={RESUME_URL} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center">
                   <Download className="mr-2 w-4 h-4" /> Resume
                 </a>
               </Button>

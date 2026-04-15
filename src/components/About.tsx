@@ -43,13 +43,13 @@ export default function About() {
             </h3>
             <div className="space-y-4 text-base sm:text-[1.05rem] text-muted-foreground leading-relaxed">
               <p>
-                I am a Robotics Software and IoT Engineer with a deep focus on robotics, embedded systems, and intelligent automation. My expertise lies in developing the "brains" of autonomous machines, from low-level sensor integration to high-level smart monitoring platforms.
+                I am an IoT and AI System Engineer with a strong focus on embedded systems, intelligent automation, and connected technologies. My work centers on building smart systems that combine sensor data, edge devices, and software into practical real-world solutions.
               </p>
               <p>
-                With a Master&apos;s degree in Electrical Engineering, I bridge the gap between complex hardware and scalable software. My work focuses on sensor integration, hardware-software interfacing, and IoT-driven monitoring solutions for intelligent system development.
+                With a Master&apos;s degree in Electrical Engineering, I bridge the gap between complex hardware and scalable software. I specialize in sensor integration, hardware-software interfacing, and smart monitoring platforms powered by IoT and AI.
               </p>
               <p>
-                I don&apos;t just build robots. I build the connected systems that make them intelligent, reliable, and operationally efficient.
+                I build intelligent and reliable systems that help machines and devices operate more efficiently, adapt to data, and deliver meaningful insights in the field.
               </p>
             </div>
           </motion.div>

@@ -30,9 +30,9 @@ export default function Footer() {
         <Separator className="my-8 bg-white/5" />
         
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-muted-foreground/50 uppercase tracking-[0.2em]">
-          <div>System_v1.0.4 // Build_2026.04.09</div>
-          <div>Designed & Developed for Robotics Excellence</div>
-          <div>Latency: 24ms // Status: Operational</div>
+          <div>Portfolio_v2.1 // Updated_2026.04.15</div>
+          <div>Designed & Developed for Intelligent Systems</div>
+          <div>Focus: IoT, AI & Embedded Systems</div>
         </div>
       </div>
     </footer>
