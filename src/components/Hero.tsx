@@ -36,7 +36,7 @@ export default function Hero() {
             </h2>
             
             <p className="text-base sm:text-lg text-muted-foreground max-w-xl mb-7 sm:mb-8 leading-relaxed">
-              Master&apos;s graduate in Electrical Engineering focused on building intelligent systems through IoT, AI, and embedded technologies. Experienced in sensor integration, smart monitoring, and hardware-software interfacing for reliable real-world automation.
+              Master&apos;s graduate in Electrical Engineering focused on system integration, IoT platforms, and full-stack monitoring solutions. Experienced in connecting devices, data pipelines, dashboards, and embedded systems into reliable real-world automation.
             </p>
             
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
@@ -69,7 +69,7 @@ export default function Hero() {
             <div className="relative w-full aspect-square max-w-[280px] sm:max-w-sm lg:max-w-md mx-auto">
               <div className="absolute inset-0 tech-border bg-white/40 overflow-hidden rounded-3xl">
                 <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/10 font-mono text-8xl rotate-12 select-none pointer-events-none">
-                  ROBOTICS_DEV
+                  SYSTEMS_IO
                 </div>
                 <img 
                   src={profileImage}

@@ -34,6 +34,15 @@ type ProjectGalleryItem = {
   phase: string;
   sensitive?: boolean;
   sensitivityNote?: string;
+  redactionZones?: RedactionZone[];
+};
+
+type RedactionZone = {
+  top: string;
+  left: string;
+  width: string;
+  height: string;
+  rounded?: string;
 };
 
 type Project = {
@@ -58,6 +67,7 @@ type ProjectVisualProps = {
   alt: string;
   sensitive?: boolean;
   sensitivityNote?: string;
+  redactionZones?: RedactionZone[];
   className?: string;
   imgClassName?: string;
 };
@@ -67,9 +77,13 @@ function ProjectVisual({
   alt,
   sensitive = false,
   sensitivityNote,
+  redactionZones,
   className = '',
   imgClassName = '',
 }: ProjectVisualProps) {
+  const hasSelectiveRedaction = !!redactionZones?.length;
+  const shouldRedact = sensitive || hasSelectiveRedaction;
+
   return (
     <div className={`relative overflow-hidden ${className}`}>
       <img
@@ -79,13 +93,32 @@ function ProjectVisual({
         referrerPolicy="no-referrer"
       />
 
-      {sensitive && (
+      {hasSelectiveRedaction && (
+        <div className="absolute inset-0 pointer-events-none">
+          {redactionZones.map((zone, index) => (
+            <div
+              key={`${src}-redaction-${index}`}
+              className={`absolute overflow-hidden border border-white/20 bg-white/10 shadow-[0_0_0_1px_rgba(15,23,42,0.08)] backdrop-blur-xl ${zone.rounded || 'rounded-2xl'}`}
+              style={{
+                top: zone.top,
+                left: zone.left,
+                width: zone.width,
+                height: zone.height,
+              }}
+            >
+              <div className="absolute inset-0 bg-slate-950/12" />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {shouldRedact && (
         <>
-          <div className="absolute inset-0 bg-slate-950/45" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.22),transparent_45%),linear-gradient(to_bottom,rgba(15,23,42,0.18),rgba(15,23,42,0.82))]" />
+          {sensitive && <div className="absolute inset-0 bg-slate-950/45" />}
+          <div className={`absolute inset-0 ${sensitive ? 'bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.22),transparent_45%),linear-gradient(to_bottom,rgba(15,23,42,0.18),rgba(15,23,42,0.82))]' : 'bg-gradient-to-t from-slate-950/60 via-transparent to-transparent'}`} />
           <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
             <Badge variant="secondary" className="mb-2 bg-white/90 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-800">
-              Confidential View Hidden
+              {sensitive ? 'Confidential View Hidden' : 'Sensitive Areas Masked'}
             </Badge>
             <p className="max-w-md text-xs leading-5 text-white/92 sm:text-sm">
               {sensitivityNote || 'Production-floor details are intentionally anonymized while preserving the workflow context.'}
@@ -164,8 +197,6 @@ const projects: Project[] = [
         title: 'Edge Monitoring Workspace',
         description: 'The production-side application monitors live camera feeds and operator activity in real time, becoming the main workspace for cycle-time tracking on the line.',
         phase: 'Edge Application',
-        sensitive: true,
-        sensitivityNote: 'The live production-floor feed is hidden to avoid exposing the factory environment, operator layout, and workstation arrangement.',
       },
       {
         src: edge2Image,
@@ -173,8 +204,6 @@ const projects: Project[] = [
         title: 'ROI-Based Detection Flow',
         description: 'This screen shows how object or operator movement is evaluated across configured Region of Interest (ROI) areas to determine the start and end of each work cycle.',
         phase: 'Edge Application',
-        sensitive: true,
-        sensitivityNote: 'The ROI editor still represents the deployment workflow, but the actual shop-floor scene is intentionally concealed for confidentiality.',
       },
       {
         src: dash1Image,
@@ -205,11 +234,11 @@ const projects: Project[] = [
         phase: 'Dashboard',
       },
     ],
-    image: dash1Image,
+    image: edge1Image,
     icon: Cpu,
   },
   {
-    title: 'AMR Queueing & Robot Operations Dashboard',
+    title: 'AMR Queueing & Operations Dashboard',
     category: 'Professional',
     description:
       'Built a robot operations dashboard on top of Pudu Open Server to turn a single-destination pager trigger into a queueing workflow, allowing the robot to continue from the pager point to 3-5 downstream destinations while operators monitor status, journey progress, and execution logs in real time.',
@@ -263,6 +292,11 @@ const projects: Project[] = [
         title: 'Operations Home Dashboard',
         description: 'The main dashboard gives operators a real-time view of robot status, current target, remaining journey, and the overall state of active queue execution.',
         phase: 'Operations',
+        sensitivityNote: 'Brand-specific subproduct naming in the dashboard header and watermark is intentionally masked.',
+        redactionZones: [
+          { top: '2.5%', left: '31%', width: '20%', height: '8%', rounded: 'rounded-xl' },
+          { top: '55%', left: '25%', width: '30%', height: '15%', rounded: 'rounded-3xl' },
+        ],
       },
       {
         src: robotRecipeImage,
@@ -270,6 +304,11 @@ const projects: Project[] = [
         title: 'Queue Recipe Management',
         description: 'Recipes are defined with the pager point as the first trigger and a stacked list of downstream destinations so the robot can continue automatically after the initial hardware call.',
         phase: 'Queueing Logic',
+        sensitivityNote: 'The subproduct label in the page header and watermark is masked while the routing workflow remains visible.',
+        redactionZones: [
+          { top: '2.5%', left: '31%', width: '20%', height: '8%', rounded: 'rounded-xl' },
+          { top: '70%', left: '24%', width: '30%', height: '10%', rounded: 'rounded-3xl' },
+        ],
       },
       {
         src: robotLogImage,
@@ -277,6 +316,11 @@ const projects: Project[] = [
         title: 'Robot Log and Reporting',
         description: 'The logging module captures journey history, status outcomes, and failure context so operations teams can review results and export records when needed.',
         phase: 'Monitoring',
+        sensitivityNote: 'The subproduct label in the page header and watermark is masked while the log data stays readable.',
+        redactionZones: [
+          { top: '2.5%', left: '31%', width: '20%', height: '8%', rounded: 'rounded-xl' },
+          { top: '70%', left: '34%', width: '19%', height: '10%', rounded: 'rounded-3xl' },
+        ],
       },
       {
         src: robotFallbackImage,
@@ -284,6 +328,12 @@ const projects: Project[] = [
         title: 'Safe-Place Recovery Controls',
         description: 'Each robot can be assigned a fallback safe place, helping the system recover more gracefully when a journey is interrupted or needs exception handling.',
         phase: 'Reliability',
+        sensitivityNote: 'Subproduct wording and the Panasonic background logo are masked to avoid exposing internal branding details.',
+        redactionZones: [
+          { top: '2.5%', left: '31%', width: '20%', height: '8%', rounded: 'rounded-xl' },
+          { top: '31%', left: '28%', width: '45%', height: '24%', rounded: 'rounded-[2rem]' },
+          { top: '74%', left: '32%', width: '31%', height: '12%', rounded: 'rounded-3xl' },
+        ],
       },
       {
         src: robotMapImage,
@@ -291,6 +341,11 @@ const projects: Project[] = [
         title: 'Prototype Live Map',
         description: 'A map-based monitoring prototype was prepared to visualize robot movement and position updates, ready as a future operational enhancement even though it was not deployed on the live site.',
         phase: 'Prototype',
+        sensitivityNote: 'The subproduct label in the page header and watermark is masked while the map and status cards remain visible.',
+        redactionZones: [
+          { top: '2.5%', left: '31%', width: '20%', height: '8%', rounded: 'rounded-xl' },
+          { top: '60%', left: '31%', width: '28%', height: '16%', rounded: 'rounded-3xl' },
+        ],
       },
     ],
     image: robotMainDashImage,
@@ -727,6 +782,7 @@ export default function Projects() {
                   alt={selectedProject.gallery?.[selectedGalleryIndex]?.alt || selectedProject.title}
                   sensitive={selectedProject.gallery?.[selectedGalleryIndex]?.sensitive}
                   sensitivityNote={selectedProject.gallery?.[selectedGalleryIndex]?.sensitivityNote}
+                  redactionZones={selectedProject.gallery?.[selectedGalleryIndex]?.redactionZones}
                   className="h-full w-full"
                   imgClassName="h-full w-full object-contain"
                 />
@@ -848,6 +904,7 @@ export default function Projects() {
                               alt={item.alt}
                               sensitive={item.sensitive}
                               sensitivityNote={item.sensitivityNote}
+                              redactionZones={item.redactionZones}
                               className="h-full w-full"
                               imgClassName="h-full w-full object-contain transition-transform duration-300 hover:scale-[1.02]"
                             />
@@ -955,6 +1012,7 @@ export default function Projects() {
                           alt={selectedProject.gallery?.[selectedGalleryIndex]?.alt || selectedProject.title}
                           sensitive={selectedProject.gallery?.[selectedGalleryIndex]?.sensitive}
                           sensitivityNote={selectedProject.gallery?.[selectedGalleryIndex]?.sensitivityNote}
+                          redactionZones={selectedProject.gallery?.[selectedGalleryIndex]?.redactionZones}
                           className="max-h-[50vh] w-auto max-w-full sm:max-h-[56vh]"
                           imgClassName="max-h-[50vh] w-auto max-w-full object-contain sm:max-h-[56vh]"
                         />

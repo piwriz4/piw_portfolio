@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Mail, MessageSquare, Linkedin } from 'lucide-react';
+import { Mail, MessageSquare, Linkedin, Phone } from 'lucide-react';
 
 export default function Contact() {
   return (
@@ -15,10 +15,22 @@ export default function Contact() {
           <h3 className="section-title mb-6">Let's build something <br /><span className="section-title-accent">intelligent together.</span></h3>
           
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl">
-            If you would like to discuss robotics software, IoT systems, or collaboration opportunities, feel free to reach out via email or LinkedIn.
+            If you would like to discuss system integration, IoT systems, full-stack monitoring platforms, or collaboration opportunities, feel free to reach out via email or LinkedIn.
           </p>
 
           <div className="space-y-6">
+            <div className="tech-border bg-white/72 backdrop-blur-sm p-6 flex items-center gap-4 group">
+              <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                <Phone className="w-6 h-6" />
+              </div>
+              <div>
+                <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Phone / WhatsApp</p>
+                <a href="tel:+6281385998501" className="text-lg font-medium text-slate-800 hover:text-primary transition-colors">
+                  +62 813-8599-8501
+                </a>
+              </div>
+            </div>
+
             <div className="tech-border bg-white/72 backdrop-blur-sm p-6 flex items-center gap-4 group">
               <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                 <Mail className="w-6 h-6" />

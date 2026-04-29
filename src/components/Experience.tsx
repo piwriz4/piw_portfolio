@@ -7,12 +7,12 @@ const experiences = [
     company: "PT Enerjik Prima Presisi",
     period: "Feb 2025 - Present",
     location: "Bandung, Indonesia",
-    description: "Robotics and IoT Engineer specializing in autonomous systems, embedded development, and AI-driven monitoring solutions. Experienced in building end-to-end robotic platforms that integrate hardware, software, and cloud systems, with a strong focus on real-time operations and industrial efficiency optimization.",
+    description: "IoT and systems engineer specializing in system integration, embedded development, and AI-driven monitoring solutions. Experienced in connecting hardware, software, and cloud services into end-to-end operational platforms with a strong focus on real-time visibility and industrial efficiency.",
     tasks: [
+      "Designed and implemented an IoT-based AI vision system using camera-driven detection and analytics, with rule-based evaluation to automate operator performance assessment and establish objective, data-driven KPI measurement where no prior evaluation system existed.",
+      "Engineered scalable embedded and IoT solutions, including hardware-software integration, cloud connectivity, and interactive dashboards, enabling real-time operational insights and system-wide performance monitoring.",
       "Developed an integrated robotic monitoring, logging, and task queuing system that enabled real-time status tracking, dynamic task allocation, and operational diagnostics, significantly improving the efficiency and reliability of autonomous material delivery.",
       "Built end-to-end mapping and localization pipelines for autonomous mobile robots, optimizing navigation routes and reducing delivery cycle time by approximately 70% in internal logistics operations.",
-      "Designed and implemented an IoT-based AI vision system using camera-driven detection and analytics, with rule-based evaluation to automate operator performance assessment and establish objective, data-driven KPI measurement where no prior evaluation system existed.",
-      "Engineered scalable embedded and IoT solutions, including hardware-software integration, cloud connectivity, and interactive dashboards, enabling real-time operational insights and system-wide performance monitoring."
     ]
   }
 ];

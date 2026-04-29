@@ -8,11 +8,11 @@ const skillGroups = [
     title: "Core Strengths",
     icon: Cpu,
     skills: [
-      "Robotics Software", "ROS / ROS2", "Sensor Integration",
-      "Semantic Mapping", "Mapping & Localization", "Autonomous Systems",
-      "Industrial IoT Systems", "Computer Vision", "AI-based Monitoring",
-      "Robot Operations Dashboards", "Real-time Monitoring Platforms",
-      "Backend & Dashboard Development", "Environmental Sensing"
+      "System Integration", "Industrial IoT Systems", "Backend & Frontend Development",
+      "Real-time Monitoring Platforms", "Sensor Integration", "Computer Vision",
+      "AI-based Monitoring", "Full-Stack Application Development", "API & Device Connectivity",
+      "Environmental Sensing", "Robotics Software",
+      "ROS / ROS2", "Semantic Mapping", "Mapping & Localization", "Autonomous Systems"
     ]
   },
   {
@@ -31,9 +31,15 @@ const skillGroups = [
     ]
   },
   {
-    title: "Soft Skills",
+    title: "Working Style",
     icon: Users,
-    skills: ["Leadership", "Communication", "Problem Solving", "Collaboration", "Adaptability"]
+    skills: [
+      "Cross-Functional Collaboration",
+      "Structured Problem Solving",
+      "Technical Communication",
+      "End-to-End Ownership",
+      "Adaptability in New Domains"
+    ]
   }
 ];
 
@@ -52,8 +58,8 @@ export default function Skills() {
               Technical <span className="section-title-accent">Expertise</span>
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              A comprehensive overview of my technical expertise in robotics software, 
-              IoT development, and system integration.
+              A comprehensive overview of my technical expertise in system integration,
+              IoT development, monitoring platforms, and applied automation.
             </p>
           </motion.div>
         </div>

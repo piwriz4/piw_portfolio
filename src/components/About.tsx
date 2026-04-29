@@ -14,14 +14,14 @@ const highlights = [
     description: 'Designing connected monitoring systems and data-driven automation workflows.'
   },
   {
-    icon: Cpu,
-    title: 'Robotics Systems',
-    description: 'Developing intelligent robotic solutions for autonomous operation and real-time control.'
-  },
-  {
     icon: Zap,
     title: 'Sensor Integration',
     description: 'Integrating sensors, devices, and embedded components for reliable field operation.'
+  },
+  {
+    icon: Cpu,
+    title: 'Robotics Systems',
+    description: 'Applying robotics experience when projects require autonomous workflows, device orchestration, or machine-level control.'
   }
 ];
 
@@ -43,13 +43,13 @@ export default function About() {
             </h3>
             <div className="space-y-4 text-base sm:text-[1.05rem] text-muted-foreground leading-relaxed">
               <p>
-                I am an IoT and AI System Engineer with a strong focus on embedded systems, intelligent automation, and connected technologies. My work centers on building smart systems that combine sensor data, edge devices, and software into practical real-world solutions.
+                I am an IoT and AI System Engineer with a strong focus on system integration, connected platforms, and intelligent automation. My work centers on building practical systems that connect sensor data, edge devices, backend services, and user-facing dashboards into one reliable workflow.
               </p>
               <p>
-                With a Master&apos;s degree in Electrical Engineering, I bridge the gap between complex hardware and scalable software. I specialize in sensor integration, hardware-software interfacing, and smart monitoring platforms powered by IoT and AI.
+                With a Master&apos;s degree in Electrical Engineering, I bridge the gap between hardware and scalable software. I specialize in sensor integration, hardware-software interfacing, monitoring platforms, and full-stack implementations powered by IoT and AI.
               </p>
               <p>
-                I build intelligent and reliable systems that help machines and devices operate more efficiently, adapt to data, and deliver meaningful insights in the field.
+                I build reliable systems that help operations run more efficiently, turn machine data into useful insight, and support better decision-making in the field.
               </p>
             </div>
           </motion.div>

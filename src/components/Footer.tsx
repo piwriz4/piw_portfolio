@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="flex items-center gap-2">
             <Cpu className="w-6 h-6 text-primary" />
             <span className="text-lg font-bold tracking-tighter font-mono">
-              LRM<span className="text-primary/50">.SYS</span>
+              LRM<span className="text-primary/50">.System</span>
             </span>
           </div>
           
@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-muted-foreground/50 uppercase tracking-[0.2em]">
           <div>Portfolio_v2.1 // Updated_2026.04.15</div>
           <div>Designed & Developed for Intelligent Systems</div>
-          <div>Focus: IoT, AI & Embedded Systems</div>
+          <div>Focus: Systems Integration, IoT & Full-Stack Platforms</div>
         </div>
       </div>
     </footer>
