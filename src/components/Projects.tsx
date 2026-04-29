@@ -32,6 +32,8 @@ type ProjectGalleryItem = {
   title: string;
   description: string;
   phase: string;
+  sensitive?: boolean;
+  sensitivityNote?: string;
 };
 
 type Project = {
@@ -50,6 +52,50 @@ type Project = {
   detailFeatures?: string[];
   gallery?: ProjectGalleryItem[];
 };
+
+type ProjectVisualProps = {
+  src: string;
+  alt: string;
+  sensitive?: boolean;
+  sensitivityNote?: string;
+  className?: string;
+  imgClassName?: string;
+};
+
+function ProjectVisual({
+  src,
+  alt,
+  sensitive = false,
+  sensitivityNote,
+  className = '',
+  imgClassName = '',
+}: ProjectVisualProps) {
+  return (
+    <div className={`relative overflow-hidden ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        className={`${imgClassName} ${sensitive ? 'scale-110 blur-xl saturate-50 brightness-[0.7]' : ''}`.trim()}
+        referrerPolicy="no-referrer"
+      />
+
+      {sensitive && (
+        <>
+          <div className="absolute inset-0 bg-slate-950/45" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.22),transparent_45%),linear-gradient(to_bottom,rgba(15,23,42,0.18),rgba(15,23,42,0.82))]" />
+          <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+            <Badge variant="secondary" className="mb-2 bg-white/90 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-800">
+              Confidential View Hidden
+            </Badge>
+            <p className="max-w-md text-xs leading-5 text-white/92 sm:text-sm">
+              {sensitivityNote || 'Production-floor details are intentionally anonymized while preserving the workflow context.'}
+            </p>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 const projects: Project[] = [
   {
@@ -118,6 +164,8 @@ const projects: Project[] = [
         title: 'Edge Monitoring Workspace',
         description: 'The production-side application monitors live camera feeds and operator activity in real time, becoming the main workspace for cycle-time tracking on the line.',
         phase: 'Edge Application',
+        sensitive: true,
+        sensitivityNote: 'The live production-floor feed is hidden to avoid exposing the factory environment, operator layout, and workstation arrangement.',
       },
       {
         src: edge2Image,
@@ -125,6 +173,8 @@ const projects: Project[] = [
         title: 'ROI-Based Detection Flow',
         description: 'This screen shows how object or operator movement is evaluated across configured Region of Interest (ROI) areas to determine the start and end of each work cycle.',
         phase: 'Edge Application',
+        sensitive: true,
+        sensitivityNote: 'The ROI editor still represents the deployment workflow, but the actual shop-floor scene is intentionally concealed for confidentiality.',
       },
       {
         src: dash1Image,
@@ -155,7 +205,7 @@ const projects: Project[] = [
         phase: 'Dashboard',
       },
     ],
-    image: edge1Image,
+    image: dash1Image,
     icon: Cpu,
   },
   {
@@ -561,11 +611,11 @@ export default function Projects() {
                     className="relative aspect-video overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
                     aria-label={`View details for ${project.title}`}
                   >
-                    <img
+                    <ProjectVisual
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 saturate-110 contrast-105"
-                      referrerPolicy="no-referrer"
+                      className="h-full w-full"
+                      imgClassName="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 saturate-110 contrast-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/75 via-transparent to-cyan-100/10" />
                     <div className="absolute left-3 top-3 sm:left-4 sm:top-4">
@@ -672,11 +722,13 @@ export default function Projects() {
                 className="h-full w-full"
                 aria-label="Focus image"
               >
-                <img
+                <ProjectVisual
                   src={selectedProject.gallery?.[selectedGalleryIndex]?.src || selectedProject.image}
                   alt={selectedProject.gallery?.[selectedGalleryIndex]?.alt || selectedProject.title}
-                  className="h-full w-full object-contain"
-                  referrerPolicy="no-referrer"
+                  sensitive={selectedProject.gallery?.[selectedGalleryIndex]?.sensitive}
+                  sensitivityNote={selectedProject.gallery?.[selectedGalleryIndex]?.sensitivityNote}
+                  className="h-full w-full"
+                  imgClassName="h-full w-full object-contain"
                 />
               </button>
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/30 to-transparent" />
@@ -704,7 +756,7 @@ export default function Projects() {
                   )}
                   {renderGalleryDots && (
                     <div
-                      className={`absolute top-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-slate-950/45 px-2.5 py-1 backdrop-blur-sm transition-opacity duration-300 sm:top-4 sm:gap-2 sm:px-3 sm:py-1.5 ${
+                      className={`absolute top-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full bg-slate-950/45 px-2 py-0.5 backdrop-blur-sm transition-opacity duration-300 sm:top-4 sm:gap-2 sm:px-3 sm:py-1.5 ${
                         showGalleryDots ? 'opacity-100' : 'opacity-0'
                       }`}
                     >
@@ -716,7 +768,7 @@ export default function Projects() {
                             revealGalleryDotsTemporarily();
                             setSelectedGalleryIndex(index);
                           }}
-                          className={`h-2.5 w-2.5 rounded-full transition-all ${
+                          className={`h-2 w-2 rounded-full transition-all sm:h-2.5 sm:w-2.5 ${
                             selectedGalleryIndex === index ? 'bg-white' : 'bg-white/45 hover:bg-white/70'
                           }`}
                           aria-label={`Go to image ${index + 1}`}
@@ -771,6 +823,11 @@ export default function Projects() {
                       <p className="mt-3 text-sm leading-7 text-slate-700">
                         {selectedProject.gallery[selectedGalleryIndex].description}
                       </p>
+                      {selectedProject.gallery[selectedGalleryIndex].sensitive && (
+                        <p className="mt-3 text-xs font-medium leading-6 text-amber-700">
+                          {selectedProject.gallery[selectedGalleryIndex].sensitivityNote}
+                        </p>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
@@ -786,10 +843,13 @@ export default function Projects() {
                           }`}
                         >
                           <div className="aspect-[4/3] overflow-hidden bg-slate-100">
-                            <img
+                            <ProjectVisual
                               src={item.src}
                               alt={item.alt}
-                              className="h-full w-full object-contain transition-transform duration-300 hover:scale-[1.02]"
+                              sensitive={item.sensitive}
+                              sensitivityNote={item.sensitivityNote}
+                              className="h-full w-full"
+                              imgClassName="h-full w-full object-contain transition-transform duration-300 hover:scale-[1.02]"
                             />
                           </div>
                           <div className="space-y-1 bg-white px-3 py-2.5">
@@ -799,6 +859,11 @@ export default function Projects() {
                             <p className="text-xs font-medium leading-5 text-slate-800">
                               {item.title}
                             </p>
+                            {item.sensitive && (
+                              <p className="text-[10px] uppercase tracking-[0.18em] text-amber-700">
+                                Redacted
+                              </p>
+                            )}
                           </div>
                         </button>
                       ))}
@@ -885,11 +950,13 @@ export default function Projects() {
                   <div className="w-full max-w-4xl">
                     <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/92 shadow-2xl">
                       <div className="flex max-h-[58vh] items-center justify-center bg-slate-950/30 p-3 sm:max-h-[65vh] sm:p-5">
-                        <img
+                        <ProjectVisual
                           src={selectedProject.gallery?.[selectedGalleryIndex]?.src || selectedProject.image}
                           alt={selectedProject.gallery?.[selectedGalleryIndex]?.alt || selectedProject.title}
-                          className="max-h-[50vh] w-auto max-w-full object-contain sm:max-h-[56vh]"
-                          referrerPolicy="no-referrer"
+                          sensitive={selectedProject.gallery?.[selectedGalleryIndex]?.sensitive}
+                          sensitivityNote={selectedProject.gallery?.[selectedGalleryIndex]?.sensitivityNote}
+                          className="max-h-[50vh] w-auto max-w-full sm:max-h-[56vh]"
+                          imgClassName="max-h-[50vh] w-auto max-w-full object-contain sm:max-h-[56vh]"
                         />
                       </div>
 
