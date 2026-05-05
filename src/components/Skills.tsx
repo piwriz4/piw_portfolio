@@ -11,8 +11,10 @@ const skillGroups = [
       "System Integration", "Industrial IoT Systems", "Backend & Frontend Development",
       "Real-time Monitoring Platforms", "Sensor Integration", "Computer Vision",
       "AI-based Monitoring", "Full-Stack Application Development", "API & Device Connectivity",
-      "Environmental Sensing", "Robotics Software",
-      "ROS / ROS2", "Semantic Mapping", "Mapping & Localization", "Autonomous Systems"
+      "Environmental Sensing", "Robotics Software", "Linux-based Deployment",
+      "System Configuration", "Log Monitoring", "Troubleshooting",
+      "Real-time Diagnostics", "Reliability Improvement", "Cloud-Connected Robotics Systems",
+      "Semantic Mapping", "Mapping & Localization", "Autonomous Systems"
     ]
   },
   {
@@ -24,10 +26,10 @@ const skillGroups = [
     title: "Systems & Tools",
     icon: Terminal,
     skills: [
-      "YOLO / YOLOv3", "OpenCV", "PyTorch", "TensorRT",
-      "PostgreSQL", "MQTT / REST / Socket.IO", "Gmapping",
+      "Linux", "YOLO", "OpenCV", "PyTorch", "TensorRT",
+      "PostgreSQL", "MQTT / REST / Socket.IO", "REST / MQTT API Integration", "ROS / ROS2", "Gmapping",
       "Jetson Nano", "Arduino", "MATLAB", "Fusion360",
-      "KiCAD", "Docker", "Git", "Linux"
+      "KiCAD", "Docker", "Git"
     ]
   },
   {

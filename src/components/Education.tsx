@@ -7,8 +7,8 @@ const education = [
     degree: "Master of Electrical Engineering",
     school: "Telkom University",
     period: "2023 - 2024",
-    focus: "Autonomous Systems & Robotics",
-    details: "Specialized in ROS-based development, sensor fusion, and intelligent control systems. Thesis focused on real-time mapping and navigation for mobile robots."
+    focus: "Software Systems for Robotics & IoT",
+    details: "Specialized in ROS-based software development, sensor fusion, and intelligent system integration. Thesis focused on building a real-time semantic mapping pipeline for mobile robotics."
   },
   {
     degree: "Bachelor of Physics Engineering",

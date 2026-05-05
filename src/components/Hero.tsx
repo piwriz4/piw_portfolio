@@ -36,7 +36,7 @@ export default function Hero() {
             </h2>
             
             <p className="text-base sm:text-lg text-muted-foreground max-w-xl mb-7 sm:mb-8 leading-relaxed">
-              Master&apos;s graduate in Electrical Engineering focused on system integration, IoT platforms, and full-stack monitoring solutions. Experienced in connecting devices, data pipelines, dashboards, and embedded systems into reliable real-world automation.
+              Master&apos;s graduate in Electrical Engineering with a software-first focus on system integration, IoT platforms, and full-stack monitoring solutions. Experienced in building data pipelines, dashboards, and device-connected applications for reliable real-world automation.
             </p>
             
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">

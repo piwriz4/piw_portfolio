@@ -355,7 +355,7 @@ const projects: Project[] = [
     title: 'Semantic Mapping via Camera and LiDAR Fusion',
     category: "Academic (Master's)",
     description:
-      'Developed a semantic mapping system that fuses camera detections and LiDAR measurements to estimate object position and size, then places those semantic markers directly onto a SLAM-generated map in real time on a low-cost mobile robot platform.',
+      'Developed a real-time semantic mapping pipeline that fuses camera detections and LiDAR measurements to estimate object position and size, then injects those semantic markers directly into a SLAM-generated map for indoor robotics software.',
     frameworks: [
       'ROS',
       'YOLOv3',
@@ -376,17 +376,17 @@ const projects: Project[] = [
       'Low-Cost Mobile Robot',
     ],
     contribution:
-      'Designed the end-to-end sensor data integration workflow, including object detection, bounding-box and LiDAR-based size estimation, global coordinate transformation, and semantic marker insertion on top of the SLAM map.',
+      'Designed the end-to-end software workflow for sensor fusion, including object detection, bounding-box and LiDAR-based size estimation, global coordinate transformation, and semantic marker insertion on top of the SLAM map.',
     highlight:
-      'The core innovation was combining image-space bounding boxes with LiDAR range data so the robot could not only detect objects, but also estimate their dimensions and store those semantic estimates directly inside the mapping pipeline.',
+      'The core innovation was combining image-space bounding boxes with LiDAR range data so the mapping software could not only detect objects, but also estimate their dimensions and store those semantic estimates directly inside the mapping pipeline.',
     detailTitle: 'Master’s Thesis: Semantic Map Generation via Camera and LiDAR Fusion',
     detailSummary:
-      'This thesis focused on building a real-time semantic mapping pipeline for indoor mobile robots by fusing camera and LiDAR data. The system first generates the geometric map with SLAM, then enriches that map with semantic object information obtained from deep-learning-based detection. A key part of the work was integrating bounding-box output from the vision model with LiDAR range measurements to estimate object size and map position, allowing the robot to store object-level semantic markers directly on the generated map rather than treating perception and mapping as separate outputs.',
+      'This thesis focused on building a real-time semantic mapping software pipeline for indoor robotics by fusing camera and LiDAR data. The system first generates the geometric map with SLAM, then enriches that map with semantic object information obtained from deep-learning-based detection. A key part of the work was integrating bounding-box output from the vision model with LiDAR range measurements to estimate object size and map position, allowing object-level semantic markers to be inserted directly into the generated map rather than treating perception and mapping as separate outputs.',
     detailPoints: [
-      'The main contribution was sensor data integration: camera detections provided object class and bounding boxes, while LiDAR and odometry data were used to estimate object distance, size, and final global position on the map.',
+      'The main contribution was the software-side sensor fusion pipeline: camera detections provided object class and bounding boxes, while LiDAR and odometry data were used to estimate object distance, size, and final global position on the map.',
       'The system was designed to estimate object dimensions from bounding-box geometry combined with LiDAR measurements, making the semantic map more informative than a class-only overlay.',
       'Detected objects were inserted directly into the SLAM-generated occupancy map, producing a semantic map that combined geometric structure with labeled environmental context.',
-      'The implementation ran on a low-cost robot platform using practical components such as Jetson Nano, Arduino Mega, RGB camera, LiDAR, and wheel encoder odometry.',
+      'Although the thesis was validated on a low-cost robot platform, the primary work was the ROS-based mapping, perception, and data-processing pipeline rather than hardware design.',
       'The overall workflow also supported result storage for further validation and analysis, including semantic output and grid-related data export.',
     ],
     detailFeatures: [
@@ -410,7 +410,7 @@ const projects: Project[] = [
         src: masterArchitectureImage,
         alt: 'System architecture for semantic mapping using camera and LiDAR fusion',
         title: 'Sensor Data Integration Architecture',
-        description: 'This architecture shows how LiDAR, camera, and encoder data were processed through ROS nodes so SLAM, object detection, and object marker generation could work together as one semantic mapping pipeline.',
+        description: 'This architecture shows how LiDAR, camera, and encoder data were processed through ROS nodes so SLAM, object detection, and object marker generation could work together as one semantic mapping software pipeline.',
         phase: 'Architecture',
       },
       {
